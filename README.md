@@ -15,19 +15,19 @@ This repository contains a fine-tuned **SegFormer-b4** pipeline for semantic seg
 ### Detailed Per-Class Performance
 The model achieves strong performance on environmental features but highlights challenges with small debris objects (Class 8), which is a focus for future optimization.
 
-| Class ID | Class Name (Inferred) | IoU Score | 
-| :--- | :--- | :--- | :--- |
-| **0** | Background | **86.87%** |
-| **1** | Water | **89.17%** |
-| **2** | Building No Damage | **74.70%** |
-| **3** | Building Minor Damage | **63.01%** |
-| **4** | Building Major Damage | **62.51%** |
-| **5** | Building Total Destruction | **59.01%** |
-| **6** | Vehicle | **71.75%** |
-| **7** | Road-Clear | **77.78%** |
-| **8** | Road-Blocked / Debris | **43.71%** |
-| **9** | Tree | **84.60%** |
-| **10** | Pool | **80.44%** |
+| Class ID | Class Name | IoU Score |
+| :--- | :--- | :--- |
+| 0 | Background | 86.87% |
+| 1 | Water | 89.17% |
+| 2 | Building No Damage | 74.70% |
+| 3 | Building Minor Damage | 63.01% |
+| 4 | Building Major Damage | 62.51% |
+| 5 | Building Total Destruction | 59.01% |
+| 6 | Vehicle | 71.75% |
+| 7 | Road-Clear | 77.78% |
+| 8 | Road-Blocked / Debris | 43.71% |
+| 9 | Tree | 84.60% |
+| 10 | Pool | 80.44% |
 
 ##  Methodology
 This implementation builds upon the Hugging Face Transformers library and utilizes:
