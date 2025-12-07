@@ -15,7 +15,7 @@ This repository contains a fine-tuned **SegFormer-b4** pipeline for semantic seg
 ### Detailed Per-Class Performance
 The model achieves strong performance on environmental features but highlights challenges with small debris objects (Class 8), which is a focus for future optimization.
 
-| Class ID | Class Name (Inferred) | IoU Score | Performance |
+| Class ID | Class Name (Inferred) | IoU Score | 
 | :--- | :--- | :--- | :--- |
 | **0** | Background | **86.87%** |
 | **1** | Water | **89.17%** |
