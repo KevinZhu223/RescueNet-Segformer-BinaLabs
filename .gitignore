@@ -1,0 +1,7 @@
+runs/
+data/
+FloodNet-Supervised_v1.0/
+*.pth
+*.pt
+*.safetensors
+__pycache__/
