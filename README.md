@@ -90,23 +90,21 @@ docker run --rm -ti --gpus all -v $(pwd):/working letatanu/semseg_2d:latest bash
 To reproduce the Phase 2 training run (OHEM + Cosine):
 
 ```bash
-./scripts/run_train_rescuenet_phase2.sh
+./run_train_rescuenet_phase2.sh
 ```
 
 ### 3. Evaluation
 To benchmark the model using the validated Center Crop strategy:
 
 ```bash
-python eval_simple.py \
-  --model_path runs/rescuenet_phase2/checkpoint-best \
-  --data_root /data/RescueNet
+./run_eval_simple.sh
 ```
 
 ### 4. Visualization
 To generate the smooth, stitched visualizations seen above:
 
 ```bash
-./scripts/run_smooth_stitch.sh
+./run_smooth_stitch.sh
 ```
 
 ### Attribution & Research Team
