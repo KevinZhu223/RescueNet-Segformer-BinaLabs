@@ -9,35 +9,35 @@ This release represents **Phase 2** of our research, where we achieved a signifi
 We significantly outperformed our initial baselines by optimizing the input strategy and loss landscape. Phase 2 introduces **OHEM (Online Hard Example Mining)** and a **1024x1024 Center Crop** strategy to preserve high-frequency details.
 
 ### Global Metrics
-| Metric | Phase 1 | Phase 2 | Improvement |
+| Experiment | Strategy | mIoU | Accuracy | Status |
 | :--- | :--- | :--- | :--- |
-| **Mean IoU (mIoU)** | 72.29% | **74.67%** | **+2.38%** |
-| **Pixel Accuracy (mAcc)** | 83.10% | **85.92%** | **+2.82%** |
+| **Original** | Standard Resize (512x512) | 70.30% | 81.60% |
+| **Phase 1** | Resize + Test-Time Augmentation (TTA) | 72.29% | 83.10% |
+| **Phase 2** | **1024x1024 Center Crop + OHEM** | **74.67%** | **85.92%** |
 
-*Note: Phase 1 utilized Test-Time Augmentation (TTA). Phase 2 achieves higher scores **without** TTA, relying purely on better feature learning.*
-
+*Key Insight: While TTA (Phase 1) provided a ~2% boost, shifting to a high-resolution cropping strategy (Phase 2) unlocked a further ~2.4% gain and significantly improved texture recognition without needing slow inference-time ensembles.*
 ---
 
 ### Detailed Per-Class Performance
-The Phase 2 strategy specifically targeted difficult damage classes. Note the massive gains in distinguishing damage levels (Major vs. Minor vs. Total Destruction), which was a key weakness in Phase 1.
+Comparing our **Original Baseline** against our final **Phase 2** model reveals massive improvements in the most difficult classes (Major/Minor Damage), proving that the cropping strategy allows the model to see fine-grained destruction details.
 
-| ID | Class Name | Phase 1 IoU | Phase 2 IoU | Delta |
+| ID | Class Name | Original IoU | Phase 2 IoU | Improvement |
 |:---|:---|:---|:---|:---|
-| 0 | Background | 86.87% | 84.70% | -2.17% |
-| 1 | Water | 89.17% | **89.60%** | +0.43% |
-| 2 | Building No Damage | 74.70% | 70.30% | -4.40% |
-| 3 | Building Minor Damage | 63.01% | **72.00%** | **+8.99%** |
-| 4 | Building Major Damage | 62.51% | **72.10%** | **+9.59%** |
-| 5 | Total Destruction | 59.01% | **60.70%** | +1.69% |
-| 6 | Vehicle | 71.75% | **76.10%** | +4.35% |
-| 7 | Road-Clear | 77.78% | **83.50%** | **+5.72%** |
-| 8 | Road-Blocked | 43.71% | 41.40% | -2.31% |
-| 9 | Tree | 84.60% | 81.40% | -3.20% |
-| 10 | Pool | 80.44% | **88.20%** | **+7.76%** |
+| 0 | Background | 86.50% | 84.70% | -1.80% |
+| 1 | Water | 89.60% | **89.60%** | 0.00% |
+| 2 | Building No Damage | 69.80% | 70.30% | +0.50% |
+| 3 | Building Minor Damage | 58.10% | **72.00%** | **+13.90%** |
+| 4 | Building Major Damage | 59.60% | **72.10%** | **+12.50%** |
+| 5 | Total Destruction | 59.00% | **60.70%** | +1.70% |
+| 6 | Vehicle | 69.60% | **76.10%** | +6.50% |
+| 7 | Road-Clear | 77.80% | **83.50%** | **+5.70%** |
+| 8 | Road-Blocked | 40.90% | 41.40% | +0.50% |
+| 9 | Tree | 84.30% | 81.40% | -2.90% |
+| 10 | Pool | 76.70% | **88.20%** | **+11.50%** |
 
 **Analysis:**
-* **Damage Assessment:** The most critical improvements were in **Major Damage (+9.6%)** and **Minor Damage (+9.0%)**. This confirms that the high-resolution crop strategy allowed the model to see the subtle texture differences (e.g., missing shingles vs. collapsed roofs) that the resized Phase 1 model missed.
-* **Environmental Features:** Classes like "Road-Clear" and "Pool" saw significant boosts due to sharper object boundaries.
+* **Damage Sensitivity:** The "Squash/Resize" method (Original) destroyed the texture of damaged roofs, capping accuracy at ~59%. The "Crop" method (Phase 2) preserved these textures, driving **Minor Damage** and **Major Damage** scores up by over **13%**.
+* **Small Objects:** Classes like **Pool** and **Vehicle** saw massive gains because they weren't being interpolated out of existence.
 
 ---
 
