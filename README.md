@@ -9,7 +9,7 @@ This release represents **Phase 2** of our research, where we achieved a signifi
 We significantly outperformed our initial baselines by optimizing the input strategy and loss landscape. Phase 2 introduces **OHEM (Online Hard Example Mining)** and a **1024x1024 Center Crop** strategy to preserve high-frequency details.
 
 ### Global Metrics
-| Experiment | Strategy | mIoU | Accuracy | Status |
+| Experiment | Strategy | mIoU | Accuracy |
 | :--- | :--- | :--- | :--- |
 | **Original** | Standard Resize (512x512) | 70.30% | 81.60% |
 | **Phase 1** | Resize + Test-Time Augmentation (TTA) | 72.29% | 83.10% |
