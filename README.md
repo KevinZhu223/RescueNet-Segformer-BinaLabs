@@ -13,7 +13,6 @@ We significantly outperformed our initial baselines by optimizing the input stra
 | :--- | :--- | :--- | :--- |
 | **Mean IoU (mIoU)** | 72.29% | **74.67%** | **+2.38%** |
 | **Pixel Accuracy (mAcc)** | 83.10% | **85.92%** | **+2.82%** |
-| **Background IoU** | 89.20% | **90.15%** | **+0.95%** |
 
 *Note: Phase 1 utilized Test-Time Augmentation (TTA). Phase 2 achieves higher scores **without** TTA, relying purely on better feature learning.*
 
